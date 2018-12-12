@@ -23,7 +23,7 @@ app.get('/:id', (req, res) => {
 
 // Nuevo 
 app.post('/', mdVerificaToken.verificaToken, (req, res) => {
-    let patologia = new Arriendo({			// datos validos para insertar
+    let patologia = new Patologia({			// datos validos para insertar
         nombre:                         req.body.nombre,
         fotos:                          req.body.fotos,
         descripcion:                    req.body.descripcion,
