@@ -1,6 +1,6 @@
 let express = require('express');
-let Patologia = require('../../models/Patologia');
-let mdVerificaToken = require('../../middlewares/auth');
+let Patologia = require('../models/patologia.model');
+let mdVerificaToken = require('../middlewares/auth');
 
 let app = express();
 
