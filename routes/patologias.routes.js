@@ -4,7 +4,7 @@ let mdVerificaToken = require('../../middlewares/auth');
 
 let app = express();
 
-//Obtener Todos Arriendos
+//Obtener Todos 
 app.get('/', (req, res) => {
     Patologia.find()
         .exec(function(err, patologias){
@@ -12,9 +12,6 @@ app.get('/', (req, res) => {
             res.status(200).jsonp(patologias);
         });
 });
-
-
-
 //Retorna un registro por id
 app.get('/:id', (req, res) => {
     Patologia.findById(req.params.id)
@@ -24,7 +21,7 @@ app.get('/:id', (req, res) => {
         });
 });
 
-// Nuevo Arriendo
+// Nuevo 
 app.post('/', mdVerificaToken.verificaToken, (req, res) => {
     let patologia = new Arriendo({			// datos validos para insertar
         nombre:                         req.body.nombre,
@@ -44,8 +41,7 @@ app.post('/', mdVerificaToken.verificaToken, (req, res) => {
     });
 });
 
-// Actualizar Arriendo
-
+// Actualizar 
 app.put('/:id', mdVerificaToken.verificaToken, (req, res) => {
     Patologia.findOneAndUpdate({_id: req.params.id}, req.body, function(err, patologia) {
         if(err) return res.status(500).send(err.message);
@@ -54,7 +50,7 @@ app.put('/:id', mdVerificaToken.verificaToken, (req, res) => {
 });
 
 
-// Borrar arriendo
+// Borrar 
 app.delete('/:id', mdVerificaToken.verificaToken, (req, res) => {
     Patologia.findOneAndRemove(req.params.id, function (err, patologia) {
         if(err) return res.status(500).send(err.message);
