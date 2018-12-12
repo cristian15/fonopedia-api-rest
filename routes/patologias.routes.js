@@ -38,7 +38,7 @@ app.post('/', mdVerificaToken.verificaToken, (req, res) => {
         audios:                         req.body.audios
     });
 
-    arriendo.save(function(err, patologia) {	// guarda en Mongo
+    patologia.save(function(err, patologia) {	// guarda en Mongo
         if(err) return res.status(500).send( err.message);
         res.status(200).jsonp(patologia);
     });
@@ -56,9 +56,9 @@ app.put('/:id', mdVerificaToken.verificaToken, (req, res) => {
 
 // Borrar arriendo
 app.delete('/:id', mdVerificaToken.verificaToken, (req, res) => {
-    Arriendo.findOneAndRemove(req.params.id, function (err, arriendo) {
+    Patologia.findOneAndRemove(req.params.id, function (err, patologia) {
         if(err) return res.status(500).send(err.message);
-        res.status(200).jsonp(arriendo);
+        res.status(200).jsonp(patologia);
     });
 });
 
