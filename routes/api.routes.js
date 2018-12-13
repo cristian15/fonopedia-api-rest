@@ -6,7 +6,7 @@ const loginRoutes = require('./login.routes');
 const uploadsRoutes = require('./upload.routes');
 const emailRoutes = require('./email.routes');
 const patologiasRoutes = require('./patologias.routes');
-const subcritosRoutes = require('./subcritos.routes');
+const subcritosRoutes = require('./subcrito.routes');
 
 
 let app = express();
