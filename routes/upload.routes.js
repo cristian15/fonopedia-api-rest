@@ -37,7 +37,7 @@ app.post('/:item/:id', mdVerificaToken.verificaToken, (req, res) => {
         let extensionArchivo = nombreCortado[nombreCortado.length - 1].toLowerCase();
 
         // Sólo estas extensiones aceptamos
-        let extensionesValidas = ['png', 'jpg', 'jpeg', 'gif', 'jpeg', 'pdf', 'doc', 'docx', 'xls', 'xlsx'];
+        let extensionesValidas = ['png', 'jpg', 'jpeg', 'gif', 'jpeg', 'wav', 'mp3', 'ogg'];
 
         if (extensionesValidas.indexOf(extensionArchivo) < 0) {
             return res.status(400).json({

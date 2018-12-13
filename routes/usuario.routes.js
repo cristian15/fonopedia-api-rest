@@ -61,7 +61,6 @@ app.post('/', (req, res) => {
 app.put('/:id', mdVerificaToken.verificaToken, (req, res) => {
     let body = req.body;
     let id = req.params.id;
-    console.log(body);
     Usuario.findById(id, (err, usuario) => {
         if (err) {
             return res.status(500).json({

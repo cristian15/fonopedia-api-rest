@@ -8,7 +8,6 @@ let app = express();
 const nodemailer = require('nodemailer');
 
 app.post('/',(req, res) => {
-    console.log(req.body)
     const mailTransport = nodemailer.createTransport({
         service: 'Gmail',
         auth: {
@@ -24,7 +23,6 @@ app.post('/',(req, res) => {
     };
     // The user subscribed to the newsletter.
     return mailTransport.sendMail(mailOptions).then(() => {
-        console.log('Email enviado a:', req.body.para);
         return res.status(200).jsonp({respuesta: 'Email enviado..'});
     });
 });
