@@ -22,7 +22,7 @@ app.get('/:id', (req, res) => {
 });
 
 // Nuevo 
-app.post('/', mdVerificaToken.verificaToken, (req, res) => {
+app.post('/', (req, res) => {
     let patologia = new Patologia({			// datos validos para insertar
         nombre:                         req.body.nombre,
         fotos:                          req.body.fotos,
