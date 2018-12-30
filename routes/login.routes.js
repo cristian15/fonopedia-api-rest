@@ -10,7 +10,6 @@ let Usuario = require('../models/usuario.model');
 app.post('/', (req, res) => {
 
     let body = req.body;
-
     Usuario.findOne({ email: body.email }, (err, usuario) => {
         if (err) {
             return res.status(500).json({

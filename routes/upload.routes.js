@@ -86,24 +86,7 @@ app.post('/:item/:id', mdVerificaToken.verificaToken, (req, res) => {
     })
 
 });
-app.delete('/:archivo', mdVerificaToken.verificaToken, (req, res) => {
 
-    let archivo = req.params.archivo;
-
-    if (fs.existsSync(pathUpload + archivo)) {
-        fs.unlinkSync(pathUpload + archivo);
-        return res.status(200).json({
-            ok: true,
-            mensaje: 'Archivo Eliminado',
-        })
-    } else {
-        return res.status(400).json({
-            ok: false,
-            mensaje: 'Archivo no existe',
-            errors: { message: 'Archivo no existe' }
-        });
-    }
-});
 app.delete('/:item/:id/:archivo', mdVerificaToken.verificaToken, (req, res) => {
 
     let archivo = req.params.archivo;
@@ -124,7 +107,7 @@ app.delete('/:item/:id/:archivo', mdVerificaToken.verificaToken, (req, res) => {
 });
 
 
-app.get('/:item/:id/:archivo',mdVerificaToken.verificaToken, (req, res) => {
+app.get('/:item/:id/:archivo', (req, res) => {
     let archivo = req.params.archivo;
     let nombreSplit = archivo.split('.');
     let extencion = nombreSplit[nombreSplit.length -1];
