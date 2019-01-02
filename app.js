@@ -24,10 +24,14 @@ const apiRoutes = require('./routes/api.routes');
 
 
 // Conexion DB
-mongoose.connect(config.URLMONGO, err => {
+mongoose.connect(config.URLMONGO,{
+    useCreateIndex: true,
+    useNewUrlParser: true}, err => {
+    
     if (err) throw err;
     console.log('Conexion DB: \x1b[32m%s\x1b[0m', 'online');
 });
+mongoose.set('useFindAndModify', false);
 
 app.use('/api', apiRoutes);
 //app.use('/', express.static('cliente'));

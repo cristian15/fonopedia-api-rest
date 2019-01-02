@@ -52,7 +52,7 @@ app.put('/:id', mdVerificaToken.verificaToken, (req, res) => {
 
 // Borrar 
 app.delete('/:id', mdVerificaToken.verificaToken, (req, res) => {
-    Patologia.findOneAndRemove(req.params.id, function (err, patologia) {
+    Patologia.findOneAndRemove({'_id' : req.params.id}, function (err, patologia) {
         if(err) return res.status(500).send(err.message);
         res.status(200).jsonp(patologia);
     });

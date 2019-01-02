@@ -45,7 +45,7 @@ app.put('/:id', mdVerificaToken.verificaToken, (req, res) => {
 
 // Borrar 
 app.delete('/:id', mdVerificaToken.verificaToken, (req, res) => {
-    Subcrito.findOneAndRemove(req.params.id, function (err, subcrito) {
+    Subcrito.findOneAndRemove({'_id' : req.params.id}, function (err, subcrito) {
         if(err) return res.status(500).send(err.message);
         res.status(200).jsonp(subcrito);
     });
