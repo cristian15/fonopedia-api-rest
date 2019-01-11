@@ -32,7 +32,8 @@ app.post('/', mdVerificaToken.verificaToken, (req, res) => {
         referencias:                    req.body.referencias,
         videos:                         req.body.videos,
         tags:                           req.body.tags,
-        audios:                         req.body.audios
+        audios:                         req.body.audios,
+        visitas:                        req.body.visitas
     });
 
     patologia.save(function(err, patologia) {	// guarda en Mongo

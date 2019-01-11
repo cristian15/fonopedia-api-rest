@@ -30,7 +30,7 @@ app.get('/', mdVerificaToken.verificaToken, (req, res) => {
 
 
 // Nuevo Usuario
-app.post('/', (req, res) => {
+app.post('/', mdVerificaToken.verificaToken, (req, res) => {
     let body = req.body;
     let usuario = new Usuario({
         nombre: body.nombre,

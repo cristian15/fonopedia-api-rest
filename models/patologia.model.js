@@ -10,7 +10,8 @@ let PatologiaSchema = new mongoose.Schema({
     referencias:                    {type: String},
     videos:                         [{type: String}],
     tags:                           [{type: String}],
-    audios:                         [{type: String}]
+    audios:                         [{type: String}],
+    visitas:                        [{type: Date}]
 
 });
 
