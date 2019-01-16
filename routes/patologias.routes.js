@@ -7,6 +7,7 @@ let app = express();
 //Obtener Todos 
 app.get('/', (req, res) => {
     Patologia.find()
+    .sort([['fecha_publicacion', 'descending']])
         .exec(function(err, patologias){
             if(err) res.send(500, err.message);
             res.status(200).jsonp(patologias);
@@ -33,7 +34,8 @@ app.post('/', mdVerificaToken.verificaToken, (req, res) => {
         videos:                         req.body.videos,
         tags:                           req.body.tags,
         audios:                         req.body.audios,
-        visitas:                        req.body.visitas
+        visitas:                        req.body.visitas,
+        fecha_publicacion:              req.body.fecha_publicacion
     });
 
     patologia.save(function(err, patologia) {	// guarda en Mongo
