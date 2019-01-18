@@ -7,7 +7,7 @@ let app = express();
 //Obtener Todos 
 app.get('/', (req, res) => {
     Patologia.find()
-    .sort([['fecha_publicacion', 'descending']])
+    .sort({fecha_publicacion:-1})
         .exec(function(err, patologias){
             if(err) res.send(500, err.message);
             res.status(200).jsonp(patologias);
@@ -45,7 +45,7 @@ app.post('/', mdVerificaToken.verificaToken, (req, res) => {
 });
 
 // Actualizar 
-app.put('/:id', mdVerificaToken.verificaToken, (req, res) => {
+app.put('/:id', (req, res) => {
     Patologia.findOneAndUpdate({_id: req.params.id}, req.body, function(err, patologia) {
         if(err) return res.status(500).send(err.message);
         res.status(200).jsonp(patologia);
