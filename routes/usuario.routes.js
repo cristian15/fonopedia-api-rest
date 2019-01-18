@@ -30,7 +30,7 @@ app.get('/', mdVerificaToken.verificaToken, (req, res) => {
 app.get('/emails', (req, res) => {
     Usuario.find({}, 'email')
         .exec(
-            (err, usuarios) => {
+            (err, emails) => {
                 if (err) {
                     return res.status(500).json({
                         ok: false,
@@ -38,15 +38,12 @@ app.get('/emails', (req, res) => {
                         errors: err
                     });
                 }
-                return res.status(200).json({
-                    ok: true,
-                    usuarios: usuarios
-                });
+                return res.status(200).jsonp(emails);
             }
         );
 });
 
-
+ 
 // Nuevo Usuario
 app.post('/', mdVerificaToken.verificaToken, (req, res) => {
     let body = req.body;
