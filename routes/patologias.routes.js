@@ -13,6 +13,43 @@ app.get('/', (req, res) => {
             res.status(200).jsonp(patologias);
         });
 });
+
+function eliminarObjetosDuplicados(arr, prop) {
+    var nuevoArray = [];
+    var lookup  = {};
+
+    for (var i in arr) {
+        lookup[arr[i][prop]] = arr[i];
+    }
+
+    for (i in lookup) {
+        nuevoArray.push(lookup[i]);
+    }
+
+    return nuevoArray;
+}
+function eliminarObjetosDuplicados(arr, prop) {
+    var nuevoArray = [];
+    var lookup  = {};
+
+    for (var i in arr) {
+        lookup[arr[i][prop]] = arr[i];
+    }
+
+    for (i in lookup) {
+        nuevoArray.push(lookup[i]);
+    }
+
+    return nuevoArray;
+}
+//Obtener Todos 
+app.get('/areas', (req, res) => {
+    Patologia.find({},'area')
+    .exec(function(err, areas){
+        if(err) res.send(500, err.message);
+        res.status(200).jsonp(eliminarObjetosDuplicados(areas,'area'));
+    });
+});
 //Retorna un registro por id
 app.get('/:id', (req, res) => {
     Patologia.findById(req.params.id)
