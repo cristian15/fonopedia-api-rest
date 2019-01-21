@@ -40,11 +40,17 @@ function eliminarObjetosDuplicados(arr, prop) {
         nuevoArray.push(lookup[i]);
     }
 
-    return nuevoArray;
+    var arra = [];
+    for(let a of nuevoArray){
+        arra.push(a.area);
+    }
+
+    return arra;
 }
 //Obtener Todos 
 app.get('/areas', (req, res) => {
-    Patologia.find({},'area')
+    
+    Patologia.find({}, {"area":1, "_id":0})
     .exec(function(err, areas){
         if(err) res.send(500, err.message);
         res.status(200).jsonp(eliminarObjetosDuplicados(areas,'area'));

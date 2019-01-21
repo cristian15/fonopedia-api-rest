@@ -28,7 +28,7 @@ app.get('/', mdVerificaToken.verificaToken, (req, res) => {
         );
 });
 app.get('/emails', (req, res) => {
-    Usuario.find({}, 'email')
+    Usuario.find({}, {'email': 1,'_id':0})
         .exec(
             (err, emails) => {
                 if (err) {
