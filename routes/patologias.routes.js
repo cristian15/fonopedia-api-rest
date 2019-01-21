@@ -13,6 +13,14 @@ app.get('/', (req, res) => {
             res.status(200).jsonp(patologias);
         });
 });
+app.get('/area/:id', (req, res) => {
+    Patologia.find({ 'area': req.params.id })
+    .sort({fecha_publicacion:-1})
+        .exec(function(err, patologias){
+            if(err) res.send(500, err.message);
+            res.status(200).jsonp(patologias);
+        });
+});
 
 function eliminarObjetosDuplicados(arr, prop) {
     var nuevoArray = [];
