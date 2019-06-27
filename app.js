@@ -23,7 +23,7 @@ app.use(bodyParser.json());
 
 // Importar rutas
 const apiRoutes = require('./routes/api.routes');
-server.app.use('/', express.static('cliente'));
+app.use('/', express.static('cliente'));
 
 
 // Conexion DB
