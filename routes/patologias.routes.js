@@ -13,6 +13,16 @@ app.get('/', (req, res) => {
             res.status(200).jsonp(patologias);
         });
 });
+app.get('/pagina/:desde', (req, res) => {
+    Patologia.find()
+    .sort({fecha_publicacion:-1})
+    .skip(req.params.desde * 10)
+    .limit(10)
+    .exec(function(err, patologias){
+        if(err) res.send(500, err.message);
+        res.status(200).jsonp(patologias);
+    });
+});
 app.post('/area', (req, res) => {
     Patologia.find({ 'area': req.body.area })
     .sort({fecha_publicacion:-1})
@@ -43,21 +53,17 @@ function eliminarObjetosDuplicados(arr, prop) {
     for (var i in arr) {
         lookup[arr[i][prop]] = arr[i];
     }
-
     for (i in lookup) {
         nuevoArray.push(lookup[i]);
     }
-
     var arra = [];
     for(let a of nuevoArray){
         arra.push(a.area);
     }
-
     return arra;
 }
 //Obtener Todos 
 app.get('/areas', (req, res) => {
-    
     Patologia.find({}, {"area":1, "_id":0})
     .exec(function(err, areas){
         if(err) res.send(500, err.message);
