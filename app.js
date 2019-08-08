@@ -23,7 +23,7 @@ app.use(bodyParser.json());
 
 // Importar rutas
 const apiRoutes = require('./routes/api.routes');
-app.use('/', express.static('cliente'));
+//app.use('/', express.static('cliente'));
 
 
 // Conexion DB
@@ -46,7 +46,7 @@ let httpServer = http.createServer(app);
 
 const puerto = process.env.PORT || config.PUERTO;
 
-httpServer.listen(80, () => {
+httpServer.listen(puerto, () => {
     console.log('\x1b[32m%s\x1b[0m', 'HTTP Server running on port 80');
 });
 
